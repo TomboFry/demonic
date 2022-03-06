@@ -361,7 +361,7 @@
 			this.buttonSkipForwards.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonSkipForwards.ForeColor = System.Drawing.SystemColors.Control;
 			this.buttonSkipForwards.Image = global::DeMonic.Properties.Resources.skip_forward;
-			this.buttonSkipForwards.Location = new System.Drawing.Point(81, 24);
+			this.buttonSkipForwards.Location = new System.Drawing.Point(81, 26);
 			this.buttonSkipForwards.Margin = new System.Windows.Forms.Padding(0);
 			this.buttonSkipForwards.Name = "buttonSkipForwards";
 			this.buttonSkipForwards.Size = new System.Drawing.Size(36, 36);
@@ -374,7 +374,7 @@
 			this.buttonPlayPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonPlayPause.ForeColor = System.Drawing.SystemColors.Control;
 			this.buttonPlayPause.Image = global::DeMonic.Properties.Resources.play;
-			this.buttonPlayPause.Location = new System.Drawing.Point(45, 24);
+			this.buttonPlayPause.Location = new System.Drawing.Point(45, 26);
 			this.buttonPlayPause.Margin = new System.Windows.Forms.Padding(0);
 			this.buttonPlayPause.Name = "buttonPlayPause";
 			this.buttonPlayPause.Size = new System.Drawing.Size(36, 36);
@@ -387,7 +387,7 @@
 			this.buttonSkipBackwards.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonSkipBackwards.ForeColor = System.Drawing.SystemColors.Control;
 			this.buttonSkipBackwards.Image = global::DeMonic.Properties.Resources.skip_back;
-			this.buttonSkipBackwards.Location = new System.Drawing.Point(9, 24);
+			this.buttonSkipBackwards.Location = new System.Drawing.Point(9, 26);
 			this.buttonSkipBackwards.Margin = new System.Windows.Forms.Padding(0);
 			this.buttonSkipBackwards.Name = "buttonSkipBackwards";
 			this.buttonSkipBackwards.Size = new System.Drawing.Size(36, 36);
@@ -402,7 +402,7 @@
 			this.trackBar1.AutoSize = false;
 			this.trackBar1.Enabled = false;
 			this.trackBar1.LargeChange = 50;
-			this.trackBar1.Location = new System.Drawing.Point(120, 21);
+			this.trackBar1.Location = new System.Drawing.Point(120, 23);
 			this.trackBar1.Maximum = 1000;
 			this.trackBar1.Name = "trackBar1";
 			this.trackBar1.Size = new System.Drawing.Size(766, 40);
