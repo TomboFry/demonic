@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -59,6 +59,9 @@ namespace DeMonic
 
 			player.MediaEnded += Player_MediaEnded;
 			player.PlaybackSession.PlaybackStateChanged += PlaybackSession_PlaybackStateChanged;
+
+			// Meta
+			versionToolStripMenuItem.Text = $"Version {Application.ProductVersion}";
 		}
 
 		private void GetNewDiscordClient()
@@ -602,6 +605,11 @@ namespace DeMonic
 					discord.Deinitialize();
 				}
 			}
+		}
+
+		private void sourceCodeToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Process.Start("https://git.tombo.sh/tom/dotnet-demonic");
 		}
 	}
 }

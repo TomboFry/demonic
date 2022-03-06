@@ -40,6 +40,9 @@
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.scrobbleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.discordRichPresenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.sourceCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.timerTrackbar = new System.Windows.Forms.Timer(this.components);
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -82,7 +85,8 @@
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
 			this.fileToolStripMenuItem,
-			this.preferencesToolStripMenuItem});
+			this.preferencesToolStripMenuItem,
+			this.helpToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -104,7 +108,7 @@
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
 			this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
 			this.exitToolStripMenuItem.Text = "E&xit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
@@ -146,6 +150,28 @@
 			this.discordRichPresenceToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
 			this.discordRichPresenceToolStripMenuItem.Text = "&Discord Rich Presence";
 			this.discordRichPresenceToolStripMenuItem.CheckedChanged += new System.EventHandler(this.discordRichPresenceToolStripMenuItem_CheckedChanged);
+			// 
+			// helpToolStripMenuItem
+			// 
+			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.sourceCodeToolStripMenuItem,
+			this.versionToolStripMenuItem});
+			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+			this.helpToolStripMenuItem.Text = "&Help";
+			// 
+			// sourceCodeToolStripMenuItem
+			// 
+			this.sourceCodeToolStripMenuItem.Name = "sourceCodeToolStripMenuItem";
+			this.sourceCodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.sourceCodeToolStripMenuItem.Text = "Source Code";
+			this.sourceCodeToolStripMenuItem.Click += new System.EventHandler(this.sourceCodeToolStripMenuItem_Click);
+			// 
+			// versionToolStripMenuItem
+			// 
+			this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
+			this.versionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.versionToolStripMenuItem.Text = "Version";
 			// 
 			// timerTrackbar
 			// 
@@ -456,6 +482,9 @@
 		private System.Windows.Forms.ToolStripMenuItem discordRichPresenceToolStripMenuItem;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripConnectionLabel;
 		private System.Windows.Forms.TrackBar trackBar1;
+		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem sourceCodeToolStripMenuItem;
 	}
 }
 
