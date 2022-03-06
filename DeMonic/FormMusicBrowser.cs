@@ -139,7 +139,7 @@ namespace DeMonic
 				RefreshQueueList();
 				player.Source = null;
 				pictureBox1.Image = null;
-				discord.ClearPresence();
+				if (discord != null) discord.ClearPresence();
 				return;
 			}
 
@@ -391,8 +391,9 @@ namespace DeMonic
 				{ Text = $"{song.artist} - {song.album} [{song.year}]" };
 				item.SubItems.Add(artistAlbum);
 
+				var disc = song.discNumberSpecified ? $"{song.discNumber}." : "";
 				var trackNumber = new ListViewItem.ListViewSubItem
-				{ Text = SubsonicAPI.PadNumber(song.track) };
+				{ Text = disc + SubsonicAPI.PadNumber(song.track) };
 				item.SubItems.Add(trackNumber);
 
 				var trackTitle = new ListViewItem.ListViewSubItem

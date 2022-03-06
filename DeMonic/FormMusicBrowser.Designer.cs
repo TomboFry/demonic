@@ -127,6 +127,7 @@
 			// serverListToolStripMenuItem
 			// 
 			this.serverListToolStripMenuItem.Name = "serverListToolStripMenuItem";
+			this.serverListToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
 			this.serverListToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
 			this.serverListToolStripMenuItem.Text = "Server &List";
 			this.serverListToolStripMenuItem.Click += new System.EventHandler(this.serverListToolStripMenuItem_Click);
@@ -164,14 +165,14 @@
 			// sourceCodeToolStripMenuItem
 			// 
 			this.sourceCodeToolStripMenuItem.Name = "sourceCodeToolStripMenuItem";
-			this.sourceCodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.sourceCodeToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
 			this.sourceCodeToolStripMenuItem.Text = "Source Code";
 			this.sourceCodeToolStripMenuItem.Click += new System.EventHandler(this.sourceCodeToolStripMenuItem_Click);
 			// 
 			// versionToolStripMenuItem
 			// 
 			this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
-			this.versionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.versionToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
 			this.versionToolStripMenuItem.Text = "Version";
 			// 
 			// timerTrackbar
@@ -289,7 +290,7 @@
 			// columnSongNumber
 			// 
 			this.columnSongNumber.Text = "#";
-			this.columnSongNumber.Width = 32;
+			this.columnSongNumber.Width = 40;
 			// 
 			// columnTitle
 			// 
