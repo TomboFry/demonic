@@ -378,6 +378,7 @@ namespace DeMonic
 			listSongQueue.Items.Clear();
 
 			var index = 0;
+			var totalDuration = 0;
 			foreach (var song in songs)
 			{
 				var item = new ListViewItem();
@@ -402,9 +403,14 @@ namespace DeMonic
 				{ Text = SubsonicAPI.HumanDuration(song.duration) };
 				item.SubItems.Add(trackDuration);
 
+				totalDuration += song.duration;
+
 				listSongQueue.Items.Add(item);
 				index++;
 			}
+
+			var statusBarText = $"Total: {SubsonicAPI.HumanDuration(totalDuration)} ({songs.Count} songs in queue)";
+			toolStripQueueInfo.Text = statusBarText;
 		}
 
 		private void buttonPlayPause_Click(object sender, EventArgs e)
