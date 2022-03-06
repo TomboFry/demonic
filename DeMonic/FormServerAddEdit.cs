@@ -10,7 +10,7 @@ namespace DeMonic
 			InitializeComponent();
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void buttonCancel_Click(object sender, EventArgs e)
 		{
 			this.DialogResult = DialogResult.Cancel;
 			Close();
@@ -23,6 +23,9 @@ namespace DeMonic
 			var pass = txtPassword.Text;
 			var useHTTPS = chkUseHTTPS.Checked;
 			var active = DataServerList.serverList.Count == 0;
+
+			if (host == "" || user == "" || pass == "") return;
+
 			DataServerList.AddServer(new Server(host, user, pass, useHTTPS, active));
 
 			this.DialogResult = DialogResult.OK;
