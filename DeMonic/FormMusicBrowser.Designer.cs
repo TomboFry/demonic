@@ -199,6 +199,7 @@
 			// 
 			this.artistAlbumTree.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.artistAlbumTree.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.artistAlbumTree.Indent = 20;
 			this.artistAlbumTree.Location = new System.Drawing.Point(0, 0);
 			this.artistAlbumTree.Name = "artistAlbumTree";
 			this.artistAlbumTree.Size = new System.Drawing.Size(256, 306);

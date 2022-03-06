@@ -183,18 +183,12 @@ namespace DeMonic
 
 			artistAlbumTree.Nodes.Clear();
 
-			foreach (var artist in api.artistsAlbums)
+			foreach (var album in api.artistsAlbums)
 			{
-				var node = new TreeNode($"{artist.Key} ({artist.Value.Count})");
-				foreach (var album in artist.Value)
+				var node = new TreeNode($"{album.artist} - {album.name} [{album.year}]")
 				{
-					var albumNode = new TreeNode($"{album.name} [{album.year}]")
-					{
-						Tag = new { id = album.id }
-					};
-
-					node.Nodes.Add(albumNode);
-				}
+					Tag = new { id = album.id }
+				};
 				artistAlbumTree.Nodes.Add(node);
 			}
 		}
@@ -462,7 +456,7 @@ namespace DeMonic
 
 		private void artistAlbumTree_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
 		{
-			if (e.Node.Level != 1) return;
+			if (e.Node.Level != 0) return;
 
 			dynamic tag = e.Node.Tag;
 			string id = tag.id;
@@ -485,7 +479,7 @@ namespace DeMonic
 			artistAlbumTree.SelectedNode = e.Node;
 
 			if (e.Button != MouseButtons.Right) return;
-			if (e.Node.Level != 1) return;
+			if (e.Node.Level != 0) return;
 
 			contextMenuStrip1.Show(Cursor.Position);
 		}

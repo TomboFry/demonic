@@ -15,7 +15,7 @@ namespace DeMonic
 	{
 		private HttpClient client;
 		public bool Connected { get; private set; }
-		public Dictionary<string, List<AlbumID3>> artistsAlbums = new Dictionary<string, List<AlbumID3>>();
+		public List<AlbumID3> artistsAlbums = new List<AlbumID3>();
 
 		public async Task SetupClient ()
 		{
@@ -87,6 +87,7 @@ namespace DeMonic
 			var pageSize = 250;
 			var results = new List<AlbumID3>();
 			
+			// Page through results until we get no more
 			while(done == false)
 			{
 				var query = "type=newest"
@@ -114,19 +115,7 @@ namespace DeMonic
 				true
 			));
 
-			var sorted = new Dictionary<string, List<AlbumID3>>();
-
-			foreach (var result in results)
-			{
-				if (!sorted.ContainsKey(result.artist))
-				{
-					sorted.Add(result.artist, new List<AlbumID3>());
-				}
-
-				sorted[result.artist].Add(result);
-			}
-
-			artistsAlbums = sorted;
+			artistsAlbums = results;
 		}
 
 		public async Task<Image> GetCoverArt(string id)
