@@ -19,6 +19,12 @@ namespace DeMonic
 		private readonly SubsonicAPI api = new SubsonicAPI();
 		private DiscordRpcClient discord;
 
+		// Queue Management
+		private List<Child> songs = new List<Child>();
+		private int currentSong = -1;
+		private MediaPlaybackState previousState;
+		private Timer trackBarScrollTimer;
+
 		private bool IsPlaying
 		{
 			get
@@ -28,21 +34,15 @@ namespace DeMonic
 			}
 		}
 
-		// Queue Management
-		private List<Child> songs = new List<Child>();
-		private int currentSong = -1;
-		private MediaPlaybackState previousState;
-		private Timer trackBarScrollTimer;
-
 		public FormMusicBrowser()
 		{
 			InitializeComponent();
 			SetupAPI();
-			timerDiscord.Start();
-			timerTrackbar.Start();
+			TimerDiscord.Start();
+			TimerTrackbar.Start();
 
-			scrobbleToolStripMenuItem.Checked = DataServerList.ShouldScrobble;
-			discordRichPresenceToolStripMenuItem.Checked = DataServerList.UseDiscordRichPresence;
+			ScrobbleToolStripMenuItem.Checked = DataServerList.ShouldScrobble;
+			DiscordRichPresenceToolStripMenuItem.Checked = DataServerList.UseDiscordRichPresence;
 
 			if (DataServerList.UseDiscordRichPresence)
 			{
@@ -58,7 +58,7 @@ namespace DeMonic
 			player.PlaybackSession.PlaybackStateChanged += PlaybackSession_PlaybackStateChanged;
 
 			// Meta
-			versionToolStripMenuItem.Text = $"Version {Application.ProductVersion}";
+			VersionToolStripMenuItem.Text = $"Version {Application.ProductVersion}";
 		}
 
 		private void GetNewDiscordClient()
@@ -101,8 +101,8 @@ namespace DeMonic
 			Invoke(new Action(() =>
 			{
 				this.Text = text;
-				trackBar1.Enabled = currentSong >= 0;
-				buttonPlayPause.Image = IsPlaying ? Properties.Resources.pause : Properties.Resources.play;
+				TrackBarSeek.Enabled = currentSong >= 0;
+				ButtonPlayPause.Image = IsPlaying ? Properties.Resources.pause : Properties.Resources.play;
 			}));
 		}
 
@@ -131,11 +131,11 @@ namespace DeMonic
 
 			if (songs.Count <= nextSong)
 			{
-				trackBar1.Value = 0;
+				TrackBarSeek.Value = 0;
 				currentSong = -1;
 				RefreshQueueList();
 				player.Source = null;
-				pictureBox1.Image = null;
+				PictureBoxCoverArt.Image = null;
 				if (discord != null) discord.ClearPresence();
 				return;
 			}
@@ -149,8 +149,8 @@ namespace DeMonic
 			if (DataServerList.serverList.Count == 0)
 			{
 				panelNoServers.Show();
-				panelNoServers.Size = new Size(DisplayRectangle.Width, DisplayRectangle.Height - menuStrip1.Height);
-				panelNoServers.Location = new Point(0, menuStrip1.Height);
+				panelNoServers.Size = new Size(DisplayRectangle.Width, DisplayRectangle.Height - MenuStripMain.Height);
+				panelNoServers.Location = new Point(0, MenuStripMain.Height);
 				panelNoServers.Dock = DockStyle.Fill;
 				panelNoServers.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
 				panelNoServers.BringToFront();
@@ -170,7 +170,7 @@ namespace DeMonic
 			{
 				text = $"Connected to {DataServerList.ActiveServer?.host}";
 			}
-			toolStripConnectionLabel.Text = text;
+			ToolStripConnectionLabel.Text = text;
 
 			DisplayArtists();
 		}
@@ -181,7 +181,7 @@ namespace DeMonic
 
 			await api.GetAlbums();
 
-			artistAlbumTree.Nodes.Clear();
+			ArtistAlbumTree.Nodes.Clear();
 
 			foreach (var album in api.artistsAlbums)
 			{
@@ -189,7 +189,7 @@ namespace DeMonic
 				{
 					Tag = new { id = album.id }
 				};
-				artistAlbumTree.Nodes.Add(node);
+				ArtistAlbumTree.Nodes.Add(node);
 			}
 		}
 
@@ -201,25 +201,25 @@ namespace DeMonic
 			SetupAPI();
 		}
 
-		private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
+		private void PreferencesToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			ShowServerList();
 		}
 
-		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+		private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			Application.Exit();
 		}
 
-		private void toolStripConnectionLabel_Click(object sender, EventArgs e)
+		private void ToolStripConnectionLabel_Click(object sender, EventArgs e)
 		{
 			ShowServerList();
 		}
 
 		private void FormMusicBrowser_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			timerTrackbar.Stop();
-			timerDiscord.Stop();
+			TimerTrackbar.Stop();
+			TimerDiscord.Stop();
 
 			player.Pause();
 			player.Dispose();
@@ -232,11 +232,11 @@ namespace DeMonic
 			}
 		}
 
-		private void timerTrackbar_Tick(object sender, EventArgs e)
+		private void TimerTrackbar_Tick(object sender, EventArgs e)
 		{
 			if (currentSong == -1)
 			{
-				statusBarSongInfo.Text = "Not Playing";
+				ToolStripSongInfo.Text = "Not Playing";
 				return;
 			};
 
@@ -245,7 +245,7 @@ namespace DeMonic
 			// Update status bar
 			var posHuman = SubsonicAPI.HumanDuration((int)player.PlaybackSession.Position.TotalSeconds);
 			var durHuman = SubsonicAPI.HumanDuration(songs[currentSong].duration);
-			statusBarSongInfo.Text = $"{posHuman} / {durHuman}";
+			ToolStripSongInfo.Text = $"{posHuman} / {durHuman}";
 
 			// Update trackbar
 			var pos = player.PlaybackSession.Position.TotalMilliseconds;
@@ -253,20 +253,20 @@ namespace DeMonic
 			if (pos > 0.0 && len > 0.0)
 			{
 				var pct = Math.Min(pos / len * 1000, 1000);
-				trackBar1.Value = (int)pct;
+				TrackBarSeek.Value = (int)pct;
 			}
 		}
 
 		private void SongSeek()
 		{
-			var pct = (double)trackBar1.Value / 1000;
+			var pct = (double)TrackBarSeek.Value / 1000;
 			var ticks = (int)(songs[currentSong].duration * pct);
 			player.PlaybackSession.Position = new TimeSpan(0, 0, ticks);
 
 			SetDiscordRichPresence(songs[currentSong], IsPlaying);
 		}
 
-		private void trackBar1_Scroll(object sender, EventArgs e)
+		private void TrackBarSeek_Scroll(object sender, EventArgs e)
 		{
 			if (trackBarScrollTimer == null)
 			{
@@ -281,7 +281,7 @@ namespace DeMonic
 				trackBarScrollTimer.Tick += (s, eventArgs) =>
 				{
 					// check to see if the value has changed since we last ticked
-					if (trackBar1.Value == (int)trackBarScrollTimer.Tag)
+					if (TrackBarSeek.Value == (int)trackBarScrollTimer.Tag)
 					{
 						// scrolling has stopped so we are good to go ahead and do stuff
 						trackBarScrollTimer.Stop();
@@ -294,7 +294,7 @@ namespace DeMonic
 					else
 					{
 						// record the last value seen
-						trackBarScrollTimer.Tag = trackBar1.Value;
+						trackBarScrollTimer.Tag = TrackBarSeek.Value;
 					}
 				};
 				trackBarScrollTimer.Start();
@@ -310,8 +310,8 @@ namespace DeMonic
 
 		private void PlaySong(Child song)
 		{
-			timerTrackbar.Stop();
-			trackBar1.Value = 0;
+			TimerTrackbar.Stop();
+			TrackBarSeek.Value = 0;
 
 			var uri = api.GetFullUri("stream", $"id={song.id}");
 			var src = MediaSource.CreateFromUri(uri);
@@ -329,7 +329,7 @@ namespace DeMonic
 			player.Source = pb;
 			player.Play();
 
-			timerTrackbar.Start();
+			TimerTrackbar.Start();
 			RefreshQueueList();
 
 			DisplayCoverArt(song.coverArt);
@@ -372,7 +372,7 @@ namespace DeMonic
 
 		private void RefreshQueueList()
 		{
-			listSongQueue.Items.Clear();
+			ListSongQueue.Items.Clear();
 
 			var index = 0;
 			var totalDuration = 0;
@@ -403,15 +403,15 @@ namespace DeMonic
 
 				totalDuration += song.duration;
 
-				listSongQueue.Items.Add(item);
+				ListSongQueue.Items.Add(item);
 				index++;
 			}
 
 			var statusBarText = $"Total: {SubsonicAPI.HumanDuration(totalDuration)} ({songs.Count} songs in queue)";
-			toolStripQueueInfo.Text = statusBarText;
+			ToolStripQueueInfo.Text = statusBarText;
 		}
 
-		private void buttonPlayPause_Click(object sender, EventArgs e)
+		private void ButtonPlayPause_Click(object sender, EventArgs e)
 		{
 			if (player.PlaybackSession.PlaybackState == MediaPlaybackState.Playing)
 			{
@@ -436,12 +436,12 @@ namespace DeMonic
 			try
 			{
 				if (coverArt == null) return;
-				pictureBox1.Image = await api.GetCoverArt(coverArt);
+				PictureBoxCoverArt.Image = await api.GetCoverArt(coverArt);
 			}
 			catch (Exception)
 			{
 				// Ignore error and clear image
-				pictureBox1.Image = null;
+				PictureBoxCoverArt.Image = null;
 			}
 		}
 
@@ -461,7 +461,7 @@ namespace DeMonic
 			RefreshQueueList();
 		}
 
-		private void artistAlbumTree_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+		private void ArtistAlbumTree_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
 		{
 			if (e.Node.Level != 0) return;
 
@@ -472,52 +472,52 @@ namespace DeMonic
 			PlayAlbum(id, playNow);
 		}
 
-		private void listSongQueue_MouseDoubleClick(object sender, MouseEventArgs e)
+		private void ListSongQueue_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
-			var items = listSongQueue.SelectedIndices;
+			var items = ListSongQueue.SelectedIndices;
 			if (items.Count == 0) return;
 
 			currentSong = items[0];
 			PlaySong(songs[currentSong]);
 		}
 
-		private void artistAlbumTree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+		private void ArtistAlbumTree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
 		{
-			artistAlbumTree.SelectedNode = e.Node;
+			ArtistAlbumTree.SelectedNode = e.Node;
 
 			if (e.Button != MouseButtons.Right) return;
 			if (e.Node.Level != 0) return;
 
-			contextMenuStrip1.Show(Cursor.Position);
+			ContextMenuArtistsAlbums.Show(Cursor.Position);
 		}
 
-		private void playNowToolStripMenuItem_Click(object sender, EventArgs e)
+		private void PlayNowToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			dynamic tag = artistAlbumTree.SelectedNode.Tag;
+			dynamic tag = ArtistAlbumTree.SelectedNode.Tag;
 			string id = tag.id;
 
 			PlayAlbum(id, true);
 		}
 
-		private void addToQueueToolStripMenuItem_Click(object sender, EventArgs e)
+		private void AddToQueueToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			dynamic tag = artistAlbumTree.SelectedNode.Tag;
+			dynamic tag = ArtistAlbumTree.SelectedNode.Tag;
 			string id = tag.id;
 
 			PlayAlbum(id, false);
 		}
 
-		private void buttonSkipForwards_Click(object sender, EventArgs e)
+		private void ButtonSkipForwards_Click(object sender, EventArgs e)
 		{
 			SkipSong(1);
 		}
 
-		private void buttonSkipBackwards_Click(object sender, EventArgs e)
+		private void ButtonSkipBackwards_Click(object sender, EventArgs e)
 		{
 			SkipSong(-1);
 		}
 
-		private void listSongQueue_KeyUp(object sender, KeyEventArgs e)
+		private void ListSongQueue_KeyUp(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Delete)
 			{
@@ -535,7 +535,7 @@ namespace DeMonic
 				// later songs to change. There's gotta be a way to improve this
 				// but I'm not quite sure how yet.
 				var songsToDelete = new List<Child>();
-				foreach (int index in listSongQueue.SelectedIndices)
+				foreach (int index in ListSongQueue.SelectedIndices)
 				{
 					var song = songs[index];
 					if (song == currentSongTmp) continue;
@@ -560,34 +560,34 @@ namespace DeMonic
 
 			if (e.KeyCode == Keys.Enter)
 			{
-				if (listSongQueue.SelectedIndices.Count == 0) return;
+				if (ListSongQueue.SelectedIndices.Count == 0) return;
 
-				currentSong = listSongQueue.SelectedIndices[0];
+				currentSong = ListSongQueue.SelectedIndices[0];
 				PlaySong(songs[currentSong]);
 			}
 		}
 
-		private void timerDiscord_Tick(object sender, EventArgs e)
+		private void TimerDiscord_Tick(object sender, EventArgs e)
 		{
 			if (discord == null || discord.IsDisposed || !discord.IsInitialized) return;
 
 			discord.Invoke();
 		}
 
-		private void serverListToolStripMenuItem_Click(object sender, EventArgs e)
+		private void ServerListToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			ShowServerList();
 		}
 
-		private void scrobbleToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+		private void ScrobbleToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
 		{
-			DataServerList.ShouldScrobble = scrobbleToolStripMenuItem.Checked;
+			DataServerList.ShouldScrobble = ScrobbleToolStripMenuItem.Checked;
 			DataServerList.SaveConfig();
 		}
 
-		private void discordRichPresenceToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+		private void DiscordRichPresenceToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
 		{
-			DataServerList.UseDiscordRichPresence = discordRichPresenceToolStripMenuItem.Checked;
+			DataServerList.UseDiscordRichPresence = DiscordRichPresenceToolStripMenuItem.Checked;
 			DataServerList.SaveConfig();
 
 			if (DataServerList.UseDiscordRichPresence)
@@ -611,7 +611,7 @@ namespace DeMonic
 			}
 		}
 
-		private void sourceCodeToolStripMenuItem_Click(object sender, EventArgs e)
+		private void SourceCodeToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			Process.Start("https://git.tombo.sh/tom/dotnet-demonic");
 		}

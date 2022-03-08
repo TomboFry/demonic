@@ -32,250 +32,250 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMusicBrowser));
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.serverListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-			this.scrobbleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.discordRichPresenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.sourceCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.timerTrackbar = new System.Windows.Forms.Timer(this.components);
-			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-			this.artistAlbumTree = new System.Windows.Forms.TreeView();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.listSongQueue = new System.Windows.Forms.ListView();
+			this.MenuStripMain = new System.Windows.Forms.MenuStrip();
+			this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.PreferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ServerListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ToolStripMenuItemSeparator = new System.Windows.Forms.ToolStripSeparator();
+			this.ScrobbleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.DiscordRichPresenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.SourceCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.VersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.TimerTrackbar = new System.Windows.Forms.Timer(this.components);
+			this.SplitContainerLR = new System.Windows.Forms.SplitContainer();
+			this.SplitContainerTB = new System.Windows.Forms.SplitContainer();
+			this.ArtistAlbumTree = new System.Windows.Forms.TreeView();
+			this.PictureBoxCoverArt = new System.Windows.Forms.PictureBox();
+			this.ListSongQueue = new System.Windows.Forms.ListView();
 			this.columnPlaying = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnArtistAlbum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnSongNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnDuration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.imageListQueue = new System.Windows.Forms.ImageList(this.components);
-			this.statusStrip = new System.Windows.Forms.StatusStrip();
-			this.statusBarSongInfo = new System.Windows.Forms.ToolStripStatusLabel();
-			this.toolStripConnectionLabel = new System.Windows.Forms.ToolStripStatusLabel();
-			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.playNowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.addToQueueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.timerDiscord = new System.Windows.Forms.Timer(this.components);
-			this.buttonSkipForwards = new System.Windows.Forms.Button();
-			this.buttonPlayPause = new System.Windows.Forms.Button();
-			this.buttonSkipBackwards = new System.Windows.Forms.Button();
-			this.trackBar1 = new System.Windows.Forms.TrackBar();
-			this.toolStripQueueInfo = new System.Windows.Forms.ToolStripStatusLabel();
-			this.menuStrip1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-			this.splitContainer1.Panel1.SuspendLayout();
-			this.splitContainer1.Panel2.SuspendLayout();
-			this.splitContainer1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-			this.splitContainer2.Panel1.SuspendLayout();
-			this.splitContainer2.Panel2.SuspendLayout();
-			this.splitContainer2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-			this.statusStrip.SuspendLayout();
-			this.contextMenuStrip1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+			this.ImageListQueue = new System.Windows.Forms.ImageList(this.components);
+			this.StatusStripBottom = new System.Windows.Forms.StatusStrip();
+			this.ToolStripSongInfo = new System.Windows.Forms.ToolStripStatusLabel();
+			this.ToolStripQueueInfo = new System.Windows.Forms.ToolStripStatusLabel();
+			this.ToolStripConnectionLabel = new System.Windows.Forms.ToolStripStatusLabel();
+			this.ContextMenuArtistsAlbums = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.PlayNowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.AddToQueueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.TimerDiscord = new System.Windows.Forms.Timer(this.components);
+			this.ButtonSkipForwards = new System.Windows.Forms.Button();
+			this.ButtonPlayPause = new System.Windows.Forms.Button();
+			this.ButtonSkipBackwards = new System.Windows.Forms.Button();
+			this.TrackBarSeek = new System.Windows.Forms.TrackBar();
+			this.MenuStripMain.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.SplitContainerLR)).BeginInit();
+			this.SplitContainerLR.Panel1.SuspendLayout();
+			this.SplitContainerLR.Panel2.SuspendLayout();
+			this.SplitContainerLR.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.SplitContainerTB)).BeginInit();
+			this.SplitContainerTB.Panel1.SuspendLayout();
+			this.SplitContainerTB.Panel2.SuspendLayout();
+			this.SplitContainerTB.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PictureBoxCoverArt)).BeginInit();
+			this.StatusStripBottom.SuspendLayout();
+			this.ContextMenuArtistsAlbums.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.TrackBarSeek)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// menuStrip1
+			// MenuStripMain
 			// 
-			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.preferencesToolStripMenuItem,
-            this.helpToolStripMenuItem});
-			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-			this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.menuStrip1.Size = new System.Drawing.Size(886, 24);
-			this.menuStrip1.TabIndex = 0;
-			this.menuStrip1.Text = "menuStrip1";
+			this.MenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FileToolStripMenuItem,
+            this.PreferencesToolStripMenuItem,
+            this.HelpToolStripMenuItem});
+			this.MenuStripMain.Location = new System.Drawing.Point(0, 0);
+			this.MenuStripMain.Name = "MenuStripMain";
+			this.MenuStripMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+			this.MenuStripMain.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.MenuStripMain.Size = new System.Drawing.Size(886, 24);
+			this.MenuStripMain.TabIndex = 0;
+			this.MenuStripMain.Text = "menuStrip1";
 			// 
-			// fileToolStripMenuItem
+			// FileToolStripMenuItem
 			// 
-			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-			this.fileToolStripMenuItem.ShortcutKeyDisplayString = "";
-			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-			this.fileToolStripMenuItem.Text = "&File";
+			this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ExitToolStripMenuItem});
+			this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
+			this.FileToolStripMenuItem.ShortcutKeyDisplayString = "";
+			this.FileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+			this.FileToolStripMenuItem.Text = "&File";
 			// 
-			// exitToolStripMenuItem
+			// ExitToolStripMenuItem
 			// 
-			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-			this.exitToolStripMenuItem.Text = "E&xit";
-			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+			this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+			this.ExitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+			this.ExitToolStripMenuItem.Text = "E&xit";
+			this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
 			// 
-			// preferencesToolStripMenuItem
+			// PreferencesToolStripMenuItem
 			// 
-			this.preferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.serverListToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.scrobbleToolStripMenuItem,
-            this.discordRichPresenceToolStripMenuItem});
-			this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-			this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
-			this.preferencesToolStripMenuItem.Text = "&Preferences";
+			this.PreferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ServerListToolStripMenuItem,
+            this.ToolStripMenuItemSeparator,
+            this.ScrobbleToolStripMenuItem,
+            this.DiscordRichPresenceToolStripMenuItem});
+			this.PreferencesToolStripMenuItem.Name = "PreferencesToolStripMenuItem";
+			this.PreferencesToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+			this.PreferencesToolStripMenuItem.Text = "&Preferences";
 			// 
-			// serverListToolStripMenuItem
+			// ServerListToolStripMenuItem
 			// 
-			this.serverListToolStripMenuItem.Name = "serverListToolStripMenuItem";
-			this.serverListToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-			this.serverListToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-			this.serverListToolStripMenuItem.Text = "Server &List";
-			this.serverListToolStripMenuItem.Click += new System.EventHandler(this.serverListToolStripMenuItem_Click);
+			this.ServerListToolStripMenuItem.Name = "ServerListToolStripMenuItem";
+			this.ServerListToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+			this.ServerListToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+			this.ServerListToolStripMenuItem.Text = "Server &List";
+			this.ServerListToolStripMenuItem.Click += new System.EventHandler(this.ServerListToolStripMenuItem_Click);
 			// 
-			// toolStripMenuItem1
+			// ToolStripMenuItemSeparator
 			// 
-			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(187, 6);
+			this.ToolStripMenuItemSeparator.Name = "ToolStripMenuItemSeparator";
+			this.ToolStripMenuItemSeparator.Size = new System.Drawing.Size(187, 6);
 			// 
-			// scrobbleToolStripMenuItem
+			// ScrobbleToolStripMenuItem
 			// 
-			this.scrobbleToolStripMenuItem.CheckOnClick = true;
-			this.scrobbleToolStripMenuItem.Name = "scrobbleToolStripMenuItem";
-			this.scrobbleToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-			this.scrobbleToolStripMenuItem.Text = "&Scrobble";
-			this.scrobbleToolStripMenuItem.CheckedChanged += new System.EventHandler(this.scrobbleToolStripMenuItem_CheckedChanged);
+			this.ScrobbleToolStripMenuItem.CheckOnClick = true;
+			this.ScrobbleToolStripMenuItem.Name = "ScrobbleToolStripMenuItem";
+			this.ScrobbleToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+			this.ScrobbleToolStripMenuItem.Text = "&Scrobble";
+			this.ScrobbleToolStripMenuItem.CheckedChanged += new System.EventHandler(this.ScrobbleToolStripMenuItem_CheckedChanged);
 			// 
-			// discordRichPresenceToolStripMenuItem
+			// DiscordRichPresenceToolStripMenuItem
 			// 
-			this.discordRichPresenceToolStripMenuItem.CheckOnClick = true;
-			this.discordRichPresenceToolStripMenuItem.Name = "discordRichPresenceToolStripMenuItem";
-			this.discordRichPresenceToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-			this.discordRichPresenceToolStripMenuItem.Text = "&Discord Rich Presence";
-			this.discordRichPresenceToolStripMenuItem.CheckedChanged += new System.EventHandler(this.discordRichPresenceToolStripMenuItem_CheckedChanged);
+			this.DiscordRichPresenceToolStripMenuItem.CheckOnClick = true;
+			this.DiscordRichPresenceToolStripMenuItem.Name = "DiscordRichPresenceToolStripMenuItem";
+			this.DiscordRichPresenceToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+			this.DiscordRichPresenceToolStripMenuItem.Text = "&Discord Rich Presence";
+			this.DiscordRichPresenceToolStripMenuItem.CheckedChanged += new System.EventHandler(this.DiscordRichPresenceToolStripMenuItem_CheckedChanged);
 			// 
-			// helpToolStripMenuItem
+			// HelpToolStripMenuItem
 			// 
-			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sourceCodeToolStripMenuItem,
-            this.versionToolStripMenuItem});
-			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-			this.helpToolStripMenuItem.Text = "&Help";
+			this.HelpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SourceCodeToolStripMenuItem,
+            this.VersionToolStripMenuItem});
+			this.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem";
+			this.HelpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+			this.HelpToolStripMenuItem.Text = "&Help";
 			// 
-			// sourceCodeToolStripMenuItem
+			// SourceCodeToolStripMenuItem
 			// 
-			this.sourceCodeToolStripMenuItem.Name = "sourceCodeToolStripMenuItem";
-			this.sourceCodeToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-			this.sourceCodeToolStripMenuItem.Text = "Source Code";
-			this.sourceCodeToolStripMenuItem.Click += new System.EventHandler(this.sourceCodeToolStripMenuItem_Click);
+			this.SourceCodeToolStripMenuItem.Name = "SourceCodeToolStripMenuItem";
+			this.SourceCodeToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+			this.SourceCodeToolStripMenuItem.Text = "Source Code";
+			this.SourceCodeToolStripMenuItem.Click += new System.EventHandler(this.SourceCodeToolStripMenuItem_Click);
 			// 
-			// versionToolStripMenuItem
+			// VersionToolStripMenuItem
 			// 
-			this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
-			this.versionToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-			this.versionToolStripMenuItem.Text = "Version";
+			this.VersionToolStripMenuItem.Name = "VersionToolStripMenuItem";
+			this.VersionToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+			this.VersionToolStripMenuItem.Text = "Version";
 			// 
-			// timerTrackbar
+			// TimerTrackbar
 			// 
-			this.timerTrackbar.Interval = 333;
-			this.timerTrackbar.Tick += new System.EventHandler(this.timerTrackbar_Tick);
+			this.TimerTrackbar.Interval = 333;
+			this.TimerTrackbar.Tick += new System.EventHandler(this.TimerTrackbar_Tick);
 			// 
-			// splitContainer1
+			// SplitContainerLR
 			// 
-			this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.SplitContainerLR.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-			this.splitContainer1.IsSplitterFixed = true;
-			this.splitContainer1.Location = new System.Drawing.Point(0, 65);
-			this.splitContainer1.Name = "splitContainer1";
+			this.SplitContainerLR.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+			this.SplitContainerLR.IsSplitterFixed = true;
+			this.SplitContainerLR.Location = new System.Drawing.Point(0, 65);
+			this.SplitContainerLR.Name = "SplitContainerLR";
 			// 
-			// splitContainer1.Panel1
+			// SplitContainerLR.Panel1
 			// 
-			this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
-			this.splitContainer1.Panel1MinSize = 256;
+			this.SplitContainerLR.Panel1.Controls.Add(this.SplitContainerTB);
+			this.SplitContainerLR.Panel1MinSize = 256;
 			// 
-			// splitContainer1.Panel2
+			// SplitContainerLR.Panel2
 			// 
-			this.splitContainer1.Panel2.Controls.Add(this.listSongQueue);
-			this.splitContainer1.Size = new System.Drawing.Size(886, 566);
-			this.splitContainer1.SplitterDistance = 256;
-			this.splitContainer1.TabIndex = 2;
+			this.SplitContainerLR.Panel2.Controls.Add(this.ListSongQueue);
+			this.SplitContainerLR.Size = new System.Drawing.Size(886, 566);
+			this.SplitContainerLR.SplitterDistance = 256;
+			this.SplitContainerLR.TabIndex = 2;
 			// 
-			// splitContainer2
+			// SplitContainerTB
 			// 
-			this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-			this.splitContainer2.IsSplitterFixed = true;
-			this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-			this.splitContainer2.Name = "splitContainer2";
-			this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			this.SplitContainerTB.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.SplitContainerTB.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+			this.SplitContainerTB.IsSplitterFixed = true;
+			this.SplitContainerTB.Location = new System.Drawing.Point(0, 0);
+			this.SplitContainerTB.Name = "SplitContainerTB";
+			this.SplitContainerTB.Orientation = System.Windows.Forms.Orientation.Horizontal;
 			// 
-			// splitContainer2.Panel1
+			// SplitContainerTB.Panel1
 			// 
-			this.splitContainer2.Panel1.Controls.Add(this.artistAlbumTree);
+			this.SplitContainerTB.Panel1.Controls.Add(this.ArtistAlbumTree);
 			// 
-			// splitContainer2.Panel2
+			// SplitContainerTB.Panel2
 			// 
-			this.splitContainer2.Panel2.Controls.Add(this.pictureBox1);
-			this.splitContainer2.Panel2MinSize = 256;
-			this.splitContainer2.Size = new System.Drawing.Size(256, 566);
-			this.splitContainer2.SplitterDistance = 306;
-			this.splitContainer2.TabIndex = 0;
+			this.SplitContainerTB.Panel2.Controls.Add(this.PictureBoxCoverArt);
+			this.SplitContainerTB.Panel2MinSize = 256;
+			this.SplitContainerTB.Size = new System.Drawing.Size(256, 566);
+			this.SplitContainerTB.SplitterDistance = 306;
+			this.SplitContainerTB.TabIndex = 0;
 			// 
-			// artistAlbumTree
+			// ArtistAlbumTree
 			// 
-			this.artistAlbumTree.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.artistAlbumTree.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.artistAlbumTree.Indent = 20;
-			this.artistAlbumTree.Location = new System.Drawing.Point(0, 0);
-			this.artistAlbumTree.Name = "artistAlbumTree";
-			this.artistAlbumTree.Size = new System.Drawing.Size(256, 306);
-			this.artistAlbumTree.TabIndex = 0;
-			this.artistAlbumTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.artistAlbumTree_NodeMouseClick);
-			this.artistAlbumTree.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.artistAlbumTree_NodeMouseDoubleClick);
+			this.ArtistAlbumTree.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ArtistAlbumTree.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ArtistAlbumTree.Indent = 20;
+			this.ArtistAlbumTree.Location = new System.Drawing.Point(0, 0);
+			this.ArtistAlbumTree.Name = "ArtistAlbumTree";
+			this.ArtistAlbumTree.Size = new System.Drawing.Size(256, 306);
+			this.ArtistAlbumTree.TabIndex = 0;
+			this.ArtistAlbumTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.ArtistAlbumTree_NodeMouseClick);
+			this.ArtistAlbumTree.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.ArtistAlbumTree_NodeMouseDoubleClick);
 			// 
-			// pictureBox1
+			// PictureBoxCoverArt
 			// 
-			this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pictureBox1.ImageLocation = "";
-			this.pictureBox1.InitialImage = null;
-			this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-			this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-			this.pictureBox1.MinimumSize = new System.Drawing.Size(256, 256);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(256, 256);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox1.TabIndex = 0;
-			this.pictureBox1.TabStop = false;
+			this.PictureBoxCoverArt.BackColor = System.Drawing.SystemColors.ControlLightLight;
+			this.PictureBoxCoverArt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PictureBoxCoverArt.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.PictureBoxCoverArt.ImageLocation = "";
+			this.PictureBoxCoverArt.InitialImage = null;
+			this.PictureBoxCoverArt.Location = new System.Drawing.Point(0, 0);
+			this.PictureBoxCoverArt.Margin = new System.Windows.Forms.Padding(0);
+			this.PictureBoxCoverArt.MinimumSize = new System.Drawing.Size(256, 256);
+			this.PictureBoxCoverArt.Name = "PictureBoxCoverArt";
+			this.PictureBoxCoverArt.Size = new System.Drawing.Size(256, 256);
+			this.PictureBoxCoverArt.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.PictureBoxCoverArt.TabIndex = 0;
+			this.PictureBoxCoverArt.TabStop = false;
 			// 
-			// listSongQueue
+			// ListSongQueue
 			// 
-			this.listSongQueue.AllowColumnReorder = true;
-			this.listSongQueue.AutoArrange = false;
-			this.listSongQueue.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+			this.ListSongQueue.AllowColumnReorder = true;
+			this.ListSongQueue.AutoArrange = false;
+			this.ListSongQueue.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnPlaying,
             this.columnArtistAlbum,
             this.columnSongNumber,
             this.columnTitle,
             this.columnDuration});
-			this.listSongQueue.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listSongQueue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.listSongQueue.FullRowSelect = true;
-			this.listSongQueue.GridLines = true;
-			this.listSongQueue.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-			this.listSongQueue.HideSelection = false;
-			this.listSongQueue.Location = new System.Drawing.Point(0, 0);
-			this.listSongQueue.Name = "listSongQueue";
-			this.listSongQueue.Size = new System.Drawing.Size(626, 566);
-			this.listSongQueue.SmallImageList = this.imageListQueue;
-			this.listSongQueue.TabIndex = 0;
-			this.listSongQueue.UseCompatibleStateImageBehavior = false;
-			this.listSongQueue.View = System.Windows.Forms.View.Details;
-			this.listSongQueue.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listSongQueue_KeyUp);
-			this.listSongQueue.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listSongQueue_MouseDoubleClick);
+			this.ListSongQueue.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.ListSongQueue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ListSongQueue.FullRowSelect = true;
+			this.ListSongQueue.GridLines = true;
+			this.ListSongQueue.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.ListSongQueue.HideSelection = false;
+			this.ListSongQueue.Location = new System.Drawing.Point(0, 0);
+			this.ListSongQueue.Name = "ListSongQueue";
+			this.ListSongQueue.Size = new System.Drawing.Size(626, 566);
+			this.ListSongQueue.SmallImageList = this.ImageListQueue;
+			this.ListSongQueue.TabIndex = 0;
+			this.ListSongQueue.UseCompatibleStateImageBehavior = false;
+			this.ListSongQueue.View = System.Windows.Forms.View.Details;
+			this.ListSongQueue.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ListSongQueue_KeyUp);
+			this.ListSongQueue.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListSongQueue_MouseDoubleClick);
 			// 
 			// columnPlaying
 			// 
@@ -301,160 +301,160 @@
 			// 
 			this.columnDuration.Text = "Length";
 			// 
-			// imageListQueue
+			// ImageListQueue
 			// 
-			this.imageListQueue.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListQueue.ImageStream")));
-			this.imageListQueue.TransparentColor = System.Drawing.Color.Transparent;
-			this.imageListQueue.Images.SetKeyName(0, "play");
+			this.ImageListQueue.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageListQueue.ImageStream")));
+			this.ImageListQueue.TransparentColor = System.Drawing.Color.Transparent;
+			this.ImageListQueue.Images.SetKeyName(0, "play");
 			// 
-			// statusStrip
+			// StatusStripBottom
 			// 
-			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusBarSongInfo,
-            this.toolStripQueueInfo,
-            this.toolStripConnectionLabel});
-			this.statusStrip.Location = new System.Drawing.Point(0, 634);
-			this.statusStrip.Name = "statusStrip";
-			this.statusStrip.Size = new System.Drawing.Size(886, 22);
-			this.statusStrip.TabIndex = 4;
-			this.statusStrip.Text = "statusStrip1";
+			this.StatusStripBottom.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripSongInfo,
+            this.ToolStripQueueInfo,
+            this.ToolStripConnectionLabel});
+			this.StatusStripBottom.Location = new System.Drawing.Point(0, 634);
+			this.StatusStripBottom.Name = "StatusStripBottom";
+			this.StatusStripBottom.Size = new System.Drawing.Size(886, 22);
+			this.StatusStripBottom.TabIndex = 4;
+			this.StatusStripBottom.Text = "statusStrip1";
 			// 
-			// statusBarSongInfo
+			// ToolStripSongInfo
 			// 
-			this.statusBarSongInfo.Name = "statusBarSongInfo";
-			this.statusBarSongInfo.Size = new System.Drawing.Size(69, 17);
-			this.statusBarSongInfo.Text = "Not Playing";
+			this.ToolStripSongInfo.Name = "ToolStripSongInfo";
+			this.ToolStripSongInfo.Size = new System.Drawing.Size(69, 17);
+			this.ToolStripSongInfo.Text = "Not Playing";
 			// 
-			// toolStripConnectionLabel
+			// ToolStripQueueInfo
 			// 
-			this.toolStripConnectionLabel.Margin = new System.Windows.Forms.Padding(8, 3, 0, 2);
-			this.toolStripConnectionLabel.Name = "toolStripConnectionLabel";
-			this.toolStripConnectionLabel.Size = new System.Drawing.Size(88, 17);
-			this.toolStripConnectionLabel.Text = "Not Connected";
-			this.toolStripConnectionLabel.Click += new System.EventHandler(this.toolStripConnectionLabel_Click);
+			this.ToolStripQueueInfo.Margin = new System.Windows.Forms.Padding(8, 3, 0, 2);
+			this.ToolStripQueueInfo.Name = "ToolStripQueueInfo";
+			this.ToolStripQueueInfo.Size = new System.Drawing.Size(165, 17);
+			this.ToolStripQueueInfo.Text = "Total: 00:00 (0 songs in queue)";
 			// 
-			// contextMenuStrip1
+			// ToolStripConnectionLabel
 			// 
-			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.playNowToolStripMenuItem,
-            this.addToQueueToolStripMenuItem});
-			this.contextMenuStrip1.Name = "contextMenuStrip1";
-			this.contextMenuStrip1.Size = new System.Drawing.Size(149, 48);
+			this.ToolStripConnectionLabel.Margin = new System.Windows.Forms.Padding(8, 3, 0, 2);
+			this.ToolStripConnectionLabel.Name = "ToolStripConnectionLabel";
+			this.ToolStripConnectionLabel.Size = new System.Drawing.Size(88, 17);
+			this.ToolStripConnectionLabel.Text = "Not Connected";
+			this.ToolStripConnectionLabel.Click += new System.EventHandler(this.ToolStripConnectionLabel_Click);
 			// 
-			// playNowToolStripMenuItem
+			// ContextMenuArtistsAlbums
 			// 
-			this.playNowToolStripMenuItem.Name = "playNowToolStripMenuItem";
-			this.playNowToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-			this.playNowToolStripMenuItem.Text = "Play Now";
-			this.playNowToolStripMenuItem.Click += new System.EventHandler(this.playNowToolStripMenuItem_Click);
+			this.ContextMenuArtistsAlbums.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PlayNowToolStripMenuItem,
+            this.AddToQueueToolStripMenuItem});
+			this.ContextMenuArtistsAlbums.Name = "contextMenuStrip1";
+			this.ContextMenuArtistsAlbums.Size = new System.Drawing.Size(149, 48);
 			// 
-			// addToQueueToolStripMenuItem
+			// PlayNowToolStripMenuItem
 			// 
-			this.addToQueueToolStripMenuItem.Name = "addToQueueToolStripMenuItem";
-			this.addToQueueToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-			this.addToQueueToolStripMenuItem.Text = "Add to Queue";
-			this.addToQueueToolStripMenuItem.Click += new System.EventHandler(this.addToQueueToolStripMenuItem_Click);
+			this.PlayNowToolStripMenuItem.Name = "PlayNowToolStripMenuItem";
+			this.PlayNowToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.PlayNowToolStripMenuItem.Text = "Play Now";
+			this.PlayNowToolStripMenuItem.Click += new System.EventHandler(this.PlayNowToolStripMenuItem_Click);
 			// 
-			// timerDiscord
+			// AddToQueueToolStripMenuItem
 			// 
-			this.timerDiscord.Interval = 5000;
-			this.timerDiscord.Tick += new System.EventHandler(this.timerDiscord_Tick);
+			this.AddToQueueToolStripMenuItem.Name = "AddToQueueToolStripMenuItem";
+			this.AddToQueueToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+			this.AddToQueueToolStripMenuItem.Text = "Add to Queue";
+			this.AddToQueueToolStripMenuItem.Click += new System.EventHandler(this.AddToQueueToolStripMenuItem_Click);
 			// 
-			// buttonSkipForwards
+			// TimerDiscord
 			// 
-			this.buttonSkipForwards.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonSkipForwards.ForeColor = System.Drawing.SystemColors.Control;
-			this.buttonSkipForwards.Image = global::DeMonic.Properties.Resources.skip_forward;
-			this.buttonSkipForwards.Location = new System.Drawing.Point(81, 26);
-			this.buttonSkipForwards.Margin = new System.Windows.Forms.Padding(0);
-			this.buttonSkipForwards.Name = "buttonSkipForwards";
-			this.buttonSkipForwards.Size = new System.Drawing.Size(36, 36);
-			this.buttonSkipForwards.TabIndex = 3;
-			this.buttonSkipForwards.UseVisualStyleBackColor = true;
-			this.buttonSkipForwards.Click += new System.EventHandler(this.buttonSkipForwards_Click);
+			this.TimerDiscord.Interval = 5000;
+			this.TimerDiscord.Tick += new System.EventHandler(this.TimerDiscord_Tick);
 			// 
-			// buttonPlayPause
+			// ButtonSkipForwards
 			// 
-			this.buttonPlayPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonPlayPause.ForeColor = System.Drawing.SystemColors.Control;
-			this.buttonPlayPause.Image = global::DeMonic.Properties.Resources.play;
-			this.buttonPlayPause.Location = new System.Drawing.Point(45, 26);
-			this.buttonPlayPause.Margin = new System.Windows.Forms.Padding(0);
-			this.buttonPlayPause.Name = "buttonPlayPause";
-			this.buttonPlayPause.Size = new System.Drawing.Size(36, 36);
-			this.buttonPlayPause.TabIndex = 3;
-			this.buttonPlayPause.UseVisualStyleBackColor = true;
-			this.buttonPlayPause.Click += new System.EventHandler(this.buttonPlayPause_Click);
+			this.ButtonSkipForwards.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.ButtonSkipForwards.ForeColor = System.Drawing.SystemColors.Control;
+			this.ButtonSkipForwards.Image = global::DeMonic.Properties.Resources.skip_forward;
+			this.ButtonSkipForwards.Location = new System.Drawing.Point(81, 26);
+			this.ButtonSkipForwards.Margin = new System.Windows.Forms.Padding(0);
+			this.ButtonSkipForwards.Name = "ButtonSkipForwards";
+			this.ButtonSkipForwards.Size = new System.Drawing.Size(36, 36);
+			this.ButtonSkipForwards.TabIndex = 3;
+			this.ButtonSkipForwards.UseVisualStyleBackColor = true;
+			this.ButtonSkipForwards.Click += new System.EventHandler(this.ButtonSkipForwards_Click);
 			// 
-			// buttonSkipBackwards
+			// ButtonPlayPause
 			// 
-			this.buttonSkipBackwards.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonSkipBackwards.ForeColor = System.Drawing.SystemColors.Control;
-			this.buttonSkipBackwards.Image = global::DeMonic.Properties.Resources.skip_back;
-			this.buttonSkipBackwards.Location = new System.Drawing.Point(9, 26);
-			this.buttonSkipBackwards.Margin = new System.Windows.Forms.Padding(0);
-			this.buttonSkipBackwards.Name = "buttonSkipBackwards";
-			this.buttonSkipBackwards.Size = new System.Drawing.Size(36, 36);
-			this.buttonSkipBackwards.TabIndex = 3;
-			this.buttonSkipBackwards.UseVisualStyleBackColor = true;
-			this.buttonSkipBackwards.Click += new System.EventHandler(this.buttonSkipBackwards_Click);
+			this.ButtonPlayPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.ButtonPlayPause.ForeColor = System.Drawing.SystemColors.Control;
+			this.ButtonPlayPause.Image = global::DeMonic.Properties.Resources.play;
+			this.ButtonPlayPause.Location = new System.Drawing.Point(45, 26);
+			this.ButtonPlayPause.Margin = new System.Windows.Forms.Padding(0);
+			this.ButtonPlayPause.Name = "ButtonPlayPause";
+			this.ButtonPlayPause.Size = new System.Drawing.Size(36, 36);
+			this.ButtonPlayPause.TabIndex = 3;
+			this.ButtonPlayPause.UseVisualStyleBackColor = true;
+			this.ButtonPlayPause.Click += new System.EventHandler(this.ButtonPlayPause_Click);
 			// 
-			// trackBar1
+			// ButtonSkipBackwards
 			// 
-			this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.ButtonSkipBackwards.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.ButtonSkipBackwards.ForeColor = System.Drawing.SystemColors.Control;
+			this.ButtonSkipBackwards.Image = global::DeMonic.Properties.Resources.skip_back;
+			this.ButtonSkipBackwards.Location = new System.Drawing.Point(9, 26);
+			this.ButtonSkipBackwards.Margin = new System.Windows.Forms.Padding(0);
+			this.ButtonSkipBackwards.Name = "ButtonSkipBackwards";
+			this.ButtonSkipBackwards.Size = new System.Drawing.Size(36, 36);
+			this.ButtonSkipBackwards.TabIndex = 3;
+			this.ButtonSkipBackwards.UseVisualStyleBackColor = true;
+			this.ButtonSkipBackwards.Click += new System.EventHandler(this.ButtonSkipBackwards_Click);
+			// 
+			// TrackBarSeek
+			// 
+			this.TrackBarSeek.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.trackBar1.AutoSize = false;
-			this.trackBar1.Enabled = false;
-			this.trackBar1.LargeChange = 50;
-			this.trackBar1.Location = new System.Drawing.Point(120, 23);
-			this.trackBar1.Maximum = 1000;
-			this.trackBar1.Name = "trackBar1";
-			this.trackBar1.Size = new System.Drawing.Size(766, 40);
-			this.trackBar1.SmallChange = 10;
-			this.trackBar1.TabIndex = 1;
-			this.trackBar1.TickFrequency = 1000;
-			this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.Both;
-			this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
-			// 
-			// toolStripQueueInfo
-			// 
-			this.toolStripQueueInfo.Margin = new System.Windows.Forms.Padding(8, 3, 0, 2);
-			this.toolStripQueueInfo.Name = "toolStripQueueInfo";
-			this.toolStripQueueInfo.Size = new System.Drawing.Size(165, 17);
-			this.toolStripQueueInfo.Text = "Total: 00:00 (0 songs in queue)";
+			this.TrackBarSeek.AutoSize = false;
+			this.TrackBarSeek.Enabled = false;
+			this.TrackBarSeek.LargeChange = 50;
+			this.TrackBarSeek.Location = new System.Drawing.Point(120, 23);
+			this.TrackBarSeek.Maximum = 1000;
+			this.TrackBarSeek.Name = "TrackBarSeek";
+			this.TrackBarSeek.Size = new System.Drawing.Size(766, 40);
+			this.TrackBarSeek.SmallChange = 10;
+			this.TrackBarSeek.TabIndex = 1;
+			this.TrackBarSeek.TickFrequency = 1000;
+			this.TrackBarSeek.TickStyle = System.Windows.Forms.TickStyle.Both;
+			this.TrackBarSeek.Scroll += new System.EventHandler(this.TrackBarSeek_Scroll);
 			// 
 			// FormMusicBrowser
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(886, 656);
-			this.Controls.Add(this.statusStrip);
-			this.Controls.Add(this.buttonSkipForwards);
-			this.Controls.Add(this.buttonPlayPause);
-			this.Controls.Add(this.buttonSkipBackwards);
-			this.Controls.Add(this.splitContainer1);
-			this.Controls.Add(this.menuStrip1);
-			this.Controls.Add(this.trackBar1);
+			this.Controls.Add(this.StatusStripBottom);
+			this.Controls.Add(this.ButtonSkipForwards);
+			this.Controls.Add(this.ButtonPlayPause);
+			this.Controls.Add(this.ButtonSkipBackwards);
+			this.Controls.Add(this.SplitContainerLR);
+			this.Controls.Add(this.MenuStripMain);
+			this.Controls.Add(this.TrackBarSeek);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MainMenuStrip = this.menuStrip1;
+			this.MainMenuStrip = this.MenuStripMain;
 			this.Name = "FormMusicBrowser";
 			this.Text = "DeMonic";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMusicBrowser_FormClosing);
-			this.menuStrip1.ResumeLayout(false);
-			this.menuStrip1.PerformLayout();
-			this.splitContainer1.Panel1.ResumeLayout(false);
-			this.splitContainer1.Panel2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-			this.splitContainer1.ResumeLayout(false);
-			this.splitContainer2.Panel1.ResumeLayout(false);
-			this.splitContainer2.Panel2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-			this.splitContainer2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			this.statusStrip.ResumeLayout(false);
-			this.statusStrip.PerformLayout();
-			this.contextMenuStrip1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+			this.MenuStripMain.ResumeLayout(false);
+			this.MenuStripMain.PerformLayout();
+			this.SplitContainerLR.Panel1.ResumeLayout(false);
+			this.SplitContainerLR.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.SplitContainerLR)).EndInit();
+			this.SplitContainerLR.ResumeLayout(false);
+			this.SplitContainerTB.Panel1.ResumeLayout(false);
+			this.SplitContainerTB.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.SplitContainerTB)).EndInit();
+			this.SplitContainerTB.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.PictureBoxCoverArt)).EndInit();
+			this.StatusStripBottom.ResumeLayout(false);
+			this.StatusStripBottom.PerformLayout();
+			this.ContextMenuArtistsAlbums.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.TrackBarSeek)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -462,41 +462,41 @@
 
 		#endregion
 
-		private System.Windows.Forms.MenuStrip menuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-		private System.Windows.Forms.Timer timerTrackbar;
-		private System.Windows.Forms.SplitContainer splitContainer1;
-		private System.Windows.Forms.SplitContainer splitContainer2;
-		private System.Windows.Forms.TreeView artistAlbumTree;
-		private System.Windows.Forms.ListView listSongQueue;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.Button buttonSkipBackwards;
-		private System.Windows.Forms.Button buttonPlayPause;
-		private System.Windows.Forms.Button buttonSkipForwards;
-		private System.Windows.Forms.StatusStrip statusStrip;
+		private System.Windows.Forms.MenuStrip MenuStripMain;
+		private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
+		private System.Windows.Forms.Timer TimerTrackbar;
+		private System.Windows.Forms.SplitContainer SplitContainerLR;
+		private System.Windows.Forms.SplitContainer SplitContainerTB;
+		private System.Windows.Forms.TreeView ArtistAlbumTree;
+		private System.Windows.Forms.ListView ListSongQueue;
+		private System.Windows.Forms.PictureBox PictureBoxCoverArt;
+		private System.Windows.Forms.Button ButtonSkipBackwards;
+		private System.Windows.Forms.Button ButtonPlayPause;
+		private System.Windows.Forms.Button ButtonSkipForwards;
+		private System.Windows.Forms.StatusStrip StatusStripBottom;
 		private System.Windows.Forms.ColumnHeader columnPlaying;
 		private System.Windows.Forms.ColumnHeader columnArtistAlbum;
 		private System.Windows.Forms.ColumnHeader columnSongNumber;
 		private System.Windows.Forms.ColumnHeader columnTitle;
 		private System.Windows.Forms.ColumnHeader columnDuration;
-		private System.Windows.Forms.ImageList imageListQueue;
-		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem playNowToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem addToQueueToolStripMenuItem;
-		private System.Windows.Forms.Timer timerDiscord;
-		private System.Windows.Forms.ToolStripStatusLabel statusBarSongInfo;
-		private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem serverListToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-		private System.Windows.Forms.ToolStripMenuItem scrobbleToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem discordRichPresenceToolStripMenuItem;
-		private System.Windows.Forms.ToolStripStatusLabel toolStripConnectionLabel;
-		private System.Windows.Forms.TrackBar trackBar1;
-		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem sourceCodeToolStripMenuItem;
-		private System.Windows.Forms.ToolStripStatusLabel toolStripQueueInfo;
+		private System.Windows.Forms.ImageList ImageListQueue;
+		private System.Windows.Forms.ContextMenuStrip ContextMenuArtistsAlbums;
+		private System.Windows.Forms.ToolStripMenuItem PlayNowToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem AddToQueueToolStripMenuItem;
+		private System.Windows.Forms.Timer TimerDiscord;
+		private System.Windows.Forms.ToolStripStatusLabel ToolStripSongInfo;
+		private System.Windows.Forms.ToolStripMenuItem PreferencesToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ServerListToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator ToolStripMenuItemSeparator;
+		private System.Windows.Forms.ToolStripMenuItem ScrobbleToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem DiscordRichPresenceToolStripMenuItem;
+		private System.Windows.Forms.ToolStripStatusLabel ToolStripConnectionLabel;
+		private System.Windows.Forms.TrackBar TrackBarSeek;
+		private System.Windows.Forms.ToolStripMenuItem HelpToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem VersionToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem SourceCodeToolStripMenuItem;
+		private System.Windows.Forms.ToolStripStatusLabel ToolStripQueueInfo;
 	}
 }
 
