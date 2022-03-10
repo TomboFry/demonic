@@ -16,9 +16,9 @@ namespace DeMonic
 
 			foreach (var server in DataServerList.serverList)
 			{
-				var display = $"{server.username}@{server.host}";
+				var display = $"{server.Username}@{server.Host}";
 
-				if (server.active)
+				if (server.Active)
 				{
 					display += " (Active)";
 				}
@@ -36,7 +36,7 @@ namespace DeMonic
 			buttonRemoveServer.Visible = buttonsVisible;
 
 			if (!buttonsVisible) return;
-			buttonUseServer.Enabled = !DataServerList.serverList[index].active;
+			buttonUseServer.Enabled = !DataServerList.serverList[index].Active;
 		}
 
 		private void FormServerList_Load(object sender, EventArgs e)

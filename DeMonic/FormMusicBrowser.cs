@@ -168,7 +168,7 @@ namespace DeMonic
 			var text = "Not Connected";
 			if (api.Connected && DataServerList.ActiveServer != null)
 			{
-				text = $"Connected to {DataServerList.ActiveServer?.host}";
+				text = $"Connected to {DataServerList.ActiveServer?.Host}";
 			}
 			ToolStripConnectionLabel.Text = text;
 

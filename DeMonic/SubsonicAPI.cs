@@ -28,8 +28,8 @@ namespace DeMonic
 
 			var activeServer = DataServerList.ActiveServer.Value;
 
-			var http = activeServer.useHTTPS ? "https" : "http";
-			var baseUrl = new Uri($"{http}://{activeServer.host}");
+			var http = activeServer.UseHTTPS ? "https" : "http";
+			var baseUrl = new Uri($"{http}://{activeServer.Host}");
 
 			client = new HttpClient
 			{

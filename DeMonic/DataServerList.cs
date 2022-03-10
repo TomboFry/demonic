@@ -26,8 +26,8 @@ namespace DeMonic
 		{
 			get
 			{
-				var server = serverList.Find(srv => srv.active);
-				if (server.username == null && server.host == null)
+				var server = serverList.Find(srv => srv.Active);
+				if (server.Username == null && server.Host == null)
 				{
 					return null;
 				}
@@ -47,7 +47,7 @@ namespace DeMonic
 			{
 				var srv = serverList[i];
 				var active = i == index;
-				serverList[i] = new Server(srv.host, srv.username, srv.password, srv.useHTTPS, active, srv.salt);
+				serverList[i] = new Server(srv.Host, srv.Username, srv.Password, srv.UseHTTPS, active, srv.Salt);
 			}
 			SaveConfig();
 		}

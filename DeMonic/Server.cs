@@ -5,12 +5,12 @@ namespace DeMonic
 {
 	public struct Server
 	{
-		public string host;
-		public string username;
-		public string password;
-		public bool useHTTPS;
-		public bool active;
-		public string salt;
+		public string Host;
+		public string Username;
+		public string Password;
+		public bool UseHTTPS;
+		public bool Active;
+		public string Salt;
 
 		public static string GenerateSalt()
 		{
@@ -57,22 +57,22 @@ namespace DeMonic
 
 		public Server(string host, string username, string password, bool useHTTPS, bool active)
 		{
-			this.salt = GenerateSalt();
-			this.password = GenerateHash(password, this.salt);
-			this.host = host;
-			this.username = username;
-			this.useHTTPS = useHTTPS;
-			this.active = active;
+			this.Salt = GenerateSalt();
+			this.Password = GenerateHash(password, this.Salt);
+			this.Host = host;
+			this.Username = username;
+			this.UseHTTPS = useHTTPS;
+			this.Active = active;
 		}
 
 		public Server(string host, string username, string saltedPassword, bool useHTTPS, bool active, string salt)
 		{
-			this.host = host;
-			this.username = username;
-			this.password = saltedPassword;
-			this.useHTTPS = useHTTPS;
-			this.active = active;
-			this.salt = salt;
+			this.Host = host;
+			this.Username = username;
+			this.Password = saltedPassword;
+			this.UseHTTPS = useHTTPS;
+			this.Active = active;
+			this.Salt = salt;
 		}
 	}
 }
