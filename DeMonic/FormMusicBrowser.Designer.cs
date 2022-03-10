@@ -67,6 +67,8 @@
 			this.ButtonPlayPause = new System.Windows.Forms.Button();
 			this.ButtonSkipBackwards = new System.Windows.Forms.Button();
 			this.TrackBarSeek = new System.Windows.Forms.TrackBar();
+			this.columnCached = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.clearCacheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.MenuStripMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.SplitContainerLR)).BeginInit();
 			this.SplitContainerLR.Panel1.SuspendLayout();
@@ -90,9 +92,8 @@
             this.HelpToolStripMenuItem});
 			this.MenuStripMain.Location = new System.Drawing.Point(0, 0);
 			this.MenuStripMain.Name = "MenuStripMain";
-			this.MenuStripMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
 			this.MenuStripMain.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.MenuStripMain.Size = new System.Drawing.Size(886, 24);
+			this.MenuStripMain.Size = new System.Drawing.Size(929, 24);
 			this.MenuStripMain.TabIndex = 0;
 			this.MenuStripMain.Text = "menuStrip1";
 			// 
@@ -117,6 +118,7 @@
 			// 
 			this.PreferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ServerListToolStripMenuItem,
+            this.clearCacheToolStripMenuItem,
             this.ToolStripMenuItemSeparator,
             this.ScrobbleToolStripMenuItem,
             this.DiscordRichPresenceToolStripMenuItem});
@@ -188,6 +190,7 @@
 			this.SplitContainerLR.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
 			this.SplitContainerLR.IsSplitterFixed = true;
 			this.SplitContainerLR.Location = new System.Drawing.Point(0, 65);
+			this.SplitContainerLR.Margin = new System.Windows.Forms.Padding(0);
 			this.SplitContainerLR.Name = "SplitContainerLR";
 			// 
 			// SplitContainerLR.Panel1
@@ -198,8 +201,9 @@
 			// SplitContainerLR.Panel2
 			// 
 			this.SplitContainerLR.Panel2.Controls.Add(this.ListSongQueue);
-			this.SplitContainerLR.Size = new System.Drawing.Size(886, 566);
+			this.SplitContainerLR.Size = new System.Drawing.Size(929, 566);
 			this.SplitContainerLR.SplitterDistance = 256;
+			this.SplitContainerLR.SplitterWidth = 2;
 			this.SplitContainerLR.TabIndex = 2;
 			// 
 			// SplitContainerTB
@@ -220,7 +224,8 @@
 			this.SplitContainerTB.Panel2.Controls.Add(this.PictureBoxCoverArt);
 			this.SplitContainerTB.Panel2MinSize = 256;
 			this.SplitContainerTB.Size = new System.Drawing.Size(256, 566);
-			this.SplitContainerTB.SplitterDistance = 306;
+			this.SplitContainerTB.SplitterDistance = 308;
+			this.SplitContainerTB.SplitterWidth = 2;
 			this.SplitContainerTB.TabIndex = 0;
 			// 
 			// ArtistAlbumTree
@@ -229,8 +234,9 @@
 			this.ArtistAlbumTree.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ArtistAlbumTree.Indent = 20;
 			this.ArtistAlbumTree.Location = new System.Drawing.Point(0, 0);
+			this.ArtistAlbumTree.Margin = new System.Windows.Forms.Padding(0);
 			this.ArtistAlbumTree.Name = "ArtistAlbumTree";
-			this.ArtistAlbumTree.Size = new System.Drawing.Size(256, 306);
+			this.ArtistAlbumTree.Size = new System.Drawing.Size(256, 308);
 			this.ArtistAlbumTree.TabIndex = 0;
 			this.ArtistAlbumTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.ArtistAlbumTree_NodeMouseClick);
 			this.ArtistAlbumTree.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.ArtistAlbumTree_NodeMouseDoubleClick);
@@ -260,7 +266,8 @@
             this.columnArtistAlbum,
             this.columnSongNumber,
             this.columnTitle,
-            this.columnDuration});
+            this.columnDuration,
+            this.columnCached});
 			this.ListSongQueue.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ListSongQueue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ListSongQueue.FullRowSelect = true;
@@ -268,8 +275,9 @@
 			this.ListSongQueue.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
 			this.ListSongQueue.HideSelection = false;
 			this.ListSongQueue.Location = new System.Drawing.Point(0, 0);
+			this.ListSongQueue.Margin = new System.Windows.Forms.Padding(0);
 			this.ListSongQueue.Name = "ListSongQueue";
-			this.ListSongQueue.Size = new System.Drawing.Size(626, 566);
+			this.ListSongQueue.Size = new System.Drawing.Size(671, 566);
 			this.ListSongQueue.SmallImageList = this.ImageListQueue;
 			this.ListSongQueue.TabIndex = 0;
 			this.ListSongQueue.UseCompatibleStateImageBehavior = false;
@@ -301,21 +309,29 @@
 			// 
 			this.columnDuration.Text = "Length";
 			// 
+			// columnCached
+			// 
+			this.columnCached.Text = "Cached";
+			this.columnCached.Width = 56;
+			// 
 			// ImageListQueue
 			// 
 			this.ImageListQueue.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageListQueue.ImageStream")));
 			this.ImageListQueue.TransparentColor = System.Drawing.Color.Transparent;
 			this.ImageListQueue.Images.SetKeyName(0, "play");
+			this.ImageListQueue.Images.SetKeyName(1, "pause");
+			this.ImageListQueue.Images.SetKeyName(2, "download");
 			// 
 			// StatusStripBottom
 			// 
+			this.StatusStripBottom.GripMargin = new System.Windows.Forms.Padding(0);
 			this.StatusStripBottom.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripSongInfo,
             this.ToolStripQueueInfo,
             this.ToolStripConnectionLabel});
 			this.StatusStripBottom.Location = new System.Drawing.Point(0, 634);
 			this.StatusStripBottom.Name = "StatusStripBottom";
-			this.StatusStripBottom.Size = new System.Drawing.Size(886, 22);
+			this.StatusStripBottom.Size = new System.Drawing.Size(929, 22);
 			this.StatusStripBottom.TabIndex = 4;
 			this.StatusStripBottom.Text = "statusStrip1";
 			// 
@@ -327,14 +343,14 @@
 			// 
 			// ToolStripQueueInfo
 			// 
-			this.ToolStripQueueInfo.Margin = new System.Windows.Forms.Padding(8, 3, 0, 2);
+			this.ToolStripQueueInfo.Margin = new System.Windows.Forms.Padding(16, 3, 0, 2);
 			this.ToolStripQueueInfo.Name = "ToolStripQueueInfo";
 			this.ToolStripQueueInfo.Size = new System.Drawing.Size(165, 17);
 			this.ToolStripQueueInfo.Text = "Total: 00:00 (0 songs in queue)";
 			// 
 			// ToolStripConnectionLabel
 			// 
-			this.ToolStripConnectionLabel.Margin = new System.Windows.Forms.Padding(8, 3, 0, 2);
+			this.ToolStripConnectionLabel.Margin = new System.Windows.Forms.Padding(16, 3, 0, 2);
 			this.ToolStripConnectionLabel.Name = "ToolStripConnectionLabel";
 			this.ToolStripConnectionLabel.Size = new System.Drawing.Size(88, 17);
 			this.ToolStripConnectionLabel.Text = "Not Connected";
@@ -416,18 +432,25 @@
 			this.TrackBarSeek.Location = new System.Drawing.Point(120, 23);
 			this.TrackBarSeek.Maximum = 1000;
 			this.TrackBarSeek.Name = "TrackBarSeek";
-			this.TrackBarSeek.Size = new System.Drawing.Size(766, 40);
+			this.TrackBarSeek.Size = new System.Drawing.Size(809, 40);
 			this.TrackBarSeek.SmallChange = 10;
 			this.TrackBarSeek.TabIndex = 1;
 			this.TrackBarSeek.TickFrequency = 1000;
 			this.TrackBarSeek.TickStyle = System.Windows.Forms.TickStyle.Both;
 			this.TrackBarSeek.Scroll += new System.EventHandler(this.TrackBarSeek_Scroll);
 			// 
+			// clearCacheToolStripMenuItem
+			// 
+			this.clearCacheToolStripMenuItem.Name = "clearCacheToolStripMenuItem";
+			this.clearCacheToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+			this.clearCacheToolStripMenuItem.Text = "&Clear Cache";
+			this.clearCacheToolStripMenuItem.Click += new System.EventHandler(this.clearCacheToolStripMenuItem_Click);
+			// 
 			// FormMusicBrowser
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(886, 656);
+			this.ClientSize = new System.Drawing.Size(929, 656);
 			this.Controls.Add(this.StatusStripBottom);
 			this.Controls.Add(this.ButtonSkipForwards);
 			this.Controls.Add(this.ButtonPlayPause);
@@ -497,6 +520,8 @@
 		private System.Windows.Forms.ToolStripMenuItem VersionToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem SourceCodeToolStripMenuItem;
 		private System.Windows.Forms.ToolStripStatusLabel ToolStripQueueInfo;
+		private System.Windows.Forms.ColumnHeader columnCached;
+		private System.Windows.Forms.ToolStripMenuItem clearCacheToolStripMenuItem;
 	}
 }
 

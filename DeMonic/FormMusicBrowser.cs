@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -7,6 +8,7 @@ using System.Windows.Forms;
 using Windows.Media;
 using Windows.Media.Core;
 using Windows.Media.Playback;
+using Windows.Storage;
 using Windows.Storage.Streams;
 using DiscordRPC;
 
@@ -100,9 +102,16 @@ namespace DeMonic
 
 			Invoke(new Action(() =>
 			{
-				this.Text = text;
-				TrackBarSeek.Enabled = currentSong >= 0;
+				var playerEnabled = currentSong >= 0;
+
+				Text = text;
+				TrackBarSeek.Enabled = playerEnabled;
 				ButtonPlayPause.Image = IsPlaying ? Properties.Resources.pause : Properties.Resources.play;
+
+				if (playerEnabled)
+				{
+					ListSongQueue.Items[currentSong].ImageIndex = IsPlaying ? 0 : 1;
+				}
 			}));
 		}
 
@@ -183,7 +192,7 @@ namespace DeMonic
 
 			ArtistAlbumTree.Nodes.Clear();
 
-			foreach (var album in api.artistsAlbums)
+			foreach (var album in api.Albums)
 			{
 				var node = new TreeNode($"{album.artist} - {album.name} [{album.year}]")
 				{
@@ -308,12 +317,12 @@ namespace DeMonic
 			PlaySong(songs[currentSong]);
 		}
 
-		private void PlaySong(Child song)
+		private async void PlaySong(Child song)
 		{
 			TimerTrackbar.Stop();
 			TrackBarSeek.Value = 0;
 
-			var uri = api.GetFullUri("stream", $"id={song.id}");
+			var uri = await api.StreamTrack(song.id);
 			var src = MediaSource.CreateFromUri(uri);
 			var pb = new MediaPlaybackItem(src);
 
@@ -323,7 +332,6 @@ namespace DeMonic
 			props.MusicProperties.AlbumTitle = song.album;
 			props.MusicProperties.Title = song.title;
 			props.MusicProperties.TrackNumber = (uint)song.track;
-			//props.Thumbnail = RandomAccessStreamReference.CreateFromStream(pictureBox1.Image);
 			pb.ApplyDisplayProperties(props);
 
 			player.Source = pb;
@@ -333,6 +341,13 @@ namespace DeMonic
 			RefreshQueueList();
 
 			DisplayCoverArt(song.coverArt);
+
+			// Download next song, if possible
+			if (currentSong + 1 < songs.Count)
+			{
+				await api.StreamTrack(songs[currentSong + 1].id);
+				RefreshQueueList();
+			}
 		}
 
 		private void SetDiscordRichPresence(Child song, bool isPlaying)
@@ -381,7 +396,7 @@ namespace DeMonic
 				var item = new ListViewItem();
 				if (index == currentSong)
 				{
-					item.ImageIndex = 0;
+					item.ImageIndex = IsPlaying ? 0 : 1;
 				}
 
 				var artistAlbum = new ListViewItem.ListViewSubItem
@@ -402,6 +417,11 @@ namespace DeMonic
 				item.SubItems.Add(trackDuration);
 
 				totalDuration += song.duration;
+
+				var hasCached = File.Exists($"{DataServerList.AudioCacheDir}\\{song.id}");
+				var trackCachedItem = new ListViewItem.ListViewSubItem
+				{ Text = hasCached ? "✔" : "" };
+				item.SubItems.Add(trackCachedItem);
 
 				ListSongQueue.Items.Add(item);
 				index++;
@@ -433,16 +453,27 @@ namespace DeMonic
 
 		private async void DisplayCoverArt(string coverArt)
 		{
+			var source = player.Source as MediaPlaybackItem;
+			var pb = source.GetDisplayProperties();
 			try
 			{
 				if (coverArt == null) return;
-				PictureBoxCoverArt.Image = await api.GetCoverArt(coverArt);
+				var artPath = await api.GetCoverArt(coverArt);
+				PictureBoxCoverArt.Image = Image.FromFile(artPath);
+
+				// Set notification image
+				var f = await StorageFile.GetFileFromPathAsync(artPath);
+				pb.Thumbnail = RandomAccessStreamReference.CreateFromFile(f);
 			}
 			catch (Exception)
 			{
 				// Ignore error and clear image
 				PictureBoxCoverArt.Image = null;
+				pb.Thumbnail = null;
 			}
+
+			source.ApplyDisplayProperties(pb);
+			player.Source = source;
 		}
 
 		private async void PlayAlbum(string id, bool playImmediately)
@@ -614,6 +645,23 @@ namespace DeMonic
 		private void SourceCodeToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			Process.Start("https://git.tombo.sh/tom/dotnet-demonic");
+		}
+
+		private void clearCacheToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			// Try to delete all files in both Audio and Art directories,
+			// but fail silently if, for example, the file is in use.
+			foreach (var file in System.IO.Directory.EnumerateFiles(DataServerList.AudioCacheDir))
+			{
+				try { File.Delete(file); } catch (Exception) { }
+			}
+
+			foreach (var file in System.IO.Directory.EnumerateFiles(DataServerList.ArtCacheDir))
+			{
+				try { File.Delete(file); } catch (Exception) { }
+			}
+
+			RefreshQueueList();
 		}
 	}
 }

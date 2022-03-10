@@ -13,13 +13,12 @@ namespace DeMonic
 {
 	public class SubsonicAPI
 	{
-		private HttpClient client;
+		private HttpClient Client;
 		public bool Connected { get; private set; }
-		public List<AlbumID3> artistsAlbums = new List<AlbumID3>();
+		public List<AlbumID3> Albums = new List<AlbumID3>();
 
 		public async Task SetupClient ()
 		{
-
 			if (DataServerList.ActiveServer == null)
 			{
 				Console.WriteLine("No active server, closing");
@@ -31,7 +30,7 @@ namespace DeMonic
 			var http = activeServer.UseHTTPS ? "https" : "http";
 			var baseUrl = new Uri($"{http}://{activeServer.Host}");
 
-			client = new HttpClient
+			Client = new HttpClient
 			{
 				BaseAddress = baseUrl,
 				Timeout = new TimeSpan(0, 0, 30),
@@ -46,22 +45,28 @@ namespace DeMonic
 			var query = "?c=DeMonic"
 				+  "&v=1.15.0"
 				+  "&f=xml"
-				+ $"&u={activeServer?.username}"
-				+ $"&t={activeServer?.password}"
-				+ $"&s={activeServer?.salt}";
+				+ $"&u={activeServer?.Username}"
+				+ $"&t={activeServer?.Password}"
+				+ $"&s={activeServer?.Salt}";
 
 			return query;
 		}
 
 		public Uri GetFullUri(string path, string query)
 		{
-			return new Uri($"{client.BaseAddress}/rest/{path}{GetBaseQuery()}&{query}");
+			return new Uri($"{Client.BaseAddress}/rest/{path}{GetBaseQuery()}&{query}");
 		}
 
 		private async Task<Stream> MakeBinaryRequest(string path, string query)
 		{
-			var response = await client.GetAsync(GetFullUri(path, query));
+			var response = await Client.GetAsync(GetFullUri(path, query));
 			return await response.Content.ReadAsStreamAsync();
+		}
+
+		private async Task<byte[]> MakeBinaryRequestBytes(string path, string query)
+		{
+			var response = await Client.GetAsync(GetFullUri(path, query));
+			return await response.Content.ReadAsByteArrayAsync();
 		}
 
 		private async Task<SubsonicResponse> MakeRequest(string path, string query)
@@ -69,9 +74,7 @@ namespace DeMonic
 			var content = await MakeBinaryRequest(path, query);
 
 			XmlSerializer serializer = new XmlSerializer(typeof(SubsonicResponse));
-			var xml = (SubsonicResponse)serializer.Deserialize(content);
-
-			return xml;
+			return (SubsonicResponse)serializer.Deserialize(content);
 		}
 
 		public async Task<bool> Ping()
@@ -115,12 +118,31 @@ namespace DeMonic
 				true
 			));
 
-			artistsAlbums = results;
+			Albums = results;
 		}
 
-		public async Task<Image> GetCoverArt(string id)
+		public async Task<string> GetCoverArt(string id)
 		{
-			return Image.FromStream(await MakeBinaryRequest("getCoverArt", $"id={id}&size=224"));
+			var savePath = $"{DataServerList.ArtCacheDir}\\{id}";
+
+			if (File.Exists(savePath)) return savePath;
+
+			var data = await MakeBinaryRequestBytes("getCoverArt", $"id={id}&size=256");
+			File.WriteAllBytes(savePath, data);
+
+			return savePath;
+		}
+
+		public async Task<Uri> StreamTrack(string trackId)
+		{
+			var savePath = $"{DataServerList.AudioCacheDir}\\{trackId}";
+
+			if (File.Exists(savePath)) return new Uri(savePath);
+
+			var data = await MakeBinaryRequestBytes("stream", $"id={trackId}");
+			File.WriteAllBytes(savePath, data);
+
+			return new Uri(savePath);
 		}
 
 		public static string PadNumber(int number)

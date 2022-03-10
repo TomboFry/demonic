@@ -20,7 +20,10 @@ namespace DeMonic
 		public static bool ShouldScrobble = true;
 		public static bool UseDiscordRichPresence = true;
 
-		private static string configPath = "config.xml";
+		private readonly static string AppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\DeMonic";
+		private readonly static string configPath = $"{AppData}\\config.xml";
+		public readonly static string AudioCacheDir = $"{AppData}\\cache\\audio";
+		public readonly static string ArtCacheDir = $"{AppData}\\cache\\art";
 
 		public static Server? ActiveServer
 		{
