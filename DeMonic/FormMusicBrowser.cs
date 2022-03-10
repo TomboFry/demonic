@@ -26,12 +26,13 @@ namespace DeMonic
 		private int currentSong = -1;
 		private MediaPlaybackState previousState;
 		private Timer trackBarScrollTimer;
+		private bool playerHasDisposed = false;
 
 		private bool IsPlaying
 		{
 			get
 			{
-				if (player == null) return false;
+				if (playerHasDisposed) return false;
 				return player.PlaybackSession.PlaybackState == MediaPlaybackState.Playing;
 			}
 		}
@@ -53,7 +54,7 @@ namespace DeMonic
 			}
 
 			panelNoServers.parent = this;
-			this.Controls.Add(panelNoServers);
+			Controls.Add(panelNoServers);
 			ShowPanel();
 
 			player.MediaEnded += Player_MediaEnded;
@@ -81,7 +82,8 @@ namespace DeMonic
 			if (
 				sender.PlaybackState == MediaPlaybackState.Buffering ||
 				sender.PlaybackState == MediaPlaybackState.Opening ||
-				sender.PlaybackState == previousState
+				sender.PlaybackState == previousState ||
+				playerHasDisposed == true
 			)
 			{
 				return;
@@ -164,7 +166,7 @@ namespace DeMonic
 				panelNoServers.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
 				panelNoServers.BringToFront();
 			}
-			else if (this.Controls.Contains(panelNoServers))
+			else if (Controls.Contains(panelNoServers))
 			{
 				panelNoServers.Hide();
 			}
@@ -232,6 +234,7 @@ namespace DeMonic
 
 			player.Pause();
 			player.Dispose();
+			playerHasDisposed = true;
 
 			if (discord != null && discord?.IsInitialized == true)
 			{
