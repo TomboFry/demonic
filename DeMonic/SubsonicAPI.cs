@@ -157,9 +157,17 @@ namespace DeMonic
 
 		public static string HumanDuration (int duration)
 		{
-			var minutes = (int)Math.Floor((float)duration / 60);
+			var hours = (int)Math.Floor((float) duration / 3600);
+			var minutes = (int)Math.Floor((float)duration / 60) % 60;
 			var seconds = duration % 60;
-			return $"{PadNumber(minutes)}:{PadNumber(seconds)}";
+			var time = $"{PadNumber(minutes)}:{PadNumber(seconds)}";
+
+			if(hours > 0)
+			{
+				time = $"{hours}:{time}";
+			}
+
+			return time;
 		}
 
 		public async Task<AlbumWithSongsID3> GetTrackList(string albumId)
